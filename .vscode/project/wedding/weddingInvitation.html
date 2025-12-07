@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Wedding Invitation — [BRIDE] & [GROOM]</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf7f2;
+            --accent: #b58900;
+            /* warm gold */
+            --muted: #6b5b4b;
+            --card: #fffdf9;
+            --glass: rgba(255, 255, 255, 0.6);
+            --shadow: 0 10px 30px rgba(17, 12, 8, 0.12);
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Inter, system-ui, Arial;
+            color: var(--muted);
+            background: linear-gradient(180deg, #fff 0%, #fbf7f3 100%)
+        }
+
+        /* container */
+        .wrap {
+            max-width: 1100px;
+            margin: 36px auto;
+            padding: 28px
+        }
+
+        /* hero */
+        .hero {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 20px;
+            align-items: center;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(186, 137, 0, 0.06), rgba(245, 240, 232, 0.6));
+            box-shadow: var(--shadow)
+        }
+
+        .hero .left {
+            padding: 10px
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            margin: 0 0 6px;
+            color: #3b2b24
+        }
+
+        .subtitle {
+            font-weight: 600;
+            letter-spacing: 0.6px
+        }
+
+        .event-meta {
+            margin-top: 12px;
+            font-size: 15px
+        }
+
+        /* photo card */
+        .photo-card {
+            height: 320px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 24px rgba(59, 43, 36, 0.12)
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.02);
+            transition: transform 1.2s ease
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.08)
+        }
+
+        /* gold motif */
+        .motif {
+            position: absolute;
+            right: -40px;
+            top: -40px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle at 30% 30%, rgba(181, 137, 0, 0.18), transparent 30%);
+            filter: blur(16px);
+        }
+
+        /* sections */
+        section.card {
+            margin-top: 28px;
+            background: var(--card);
+            padding: 22px;
+            border-radius: 14px;
+            box-shadow: var(--shadow)
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px
+        }
+
+        /* gallery and misc */
+        .gallery {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .gallery img {
+            width: calc(33.333% - 6.66px);
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px
+        }
+
+        /* footer */
+        footer {
+            text-align: center;
+            margin-top: 22px;
+            color: #5e4f42;
+            font-size: 13px
+        }
+
+        /* subtle animations */
+        .fadeIn {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeIn 0.8s forwards
+        }
+
+        .stagger>* {
+            opacity: 0;
+            transform: translateY(6px);
+            animation: stagger 0.7s forwards;
+            animation-delay: var(--d)
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @keyframes stagger {
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        /* responsive */
+        @media (max-width:900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 20px
+            }
+
+            .photo-card {
+                height: 260px
+            }
+        }
+
+        @media (max-width:520px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            .gallery img {
+                width: 48%
+            }
+        }
+
+        /* blossom accent */
+        .blossom {
+            position: absolute;
+            left: -28px;
+            bottom: -28px;
+            width: 140px;
+            height: 140px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140"><circle cx="20" cy="20" r="20" fill="%23b58900" opacity="0.12"/><circle cx="80" cy="40" r="28" fill="%23b58900" opacity="0.08"/></svg>');
+            filter: blur(6px)
+        }
+
+        /* music toggle */
+        .music-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--glass);
+            padding: 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 0, 0, 0.04)
+        }
+
+        /* header nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px
+        }
+
+        .brand {
+            font-family: 'Playfair Display';
+            font-weight: 700;
+            color: var(--muted)
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="nav fadeIn" style="--d:0s">
+            <div class="brand">[BRIDE] ❤ [GROOM]</div>
+            <div class="music-toggle">
+                <label style="font-size:13px">Play music</label>
+                <input id="musicChk" type="checkbox" aria-label="Play invitation music">
+            </div>
+        </div>
+
+        <header class="hero fadeIn" style="--d:0.05s">
+            <div class="left stagger">
+                <h1 class="title">You are invited to the wedding of</h1>
+                <h2 class="subtitle">[BRIDE FULL NAME] &amp; [GROOM FULL NAME]</h2>
+                <p class="event-meta">📅 <strong>[DATE]</strong> &nbsp; | &nbsp; 🕒 <strong>[TIME]</strong></p>
+                <p class="event-meta">📍 <strong>Santha Raguram Kalyana Mandapam, Kattamanchi, Chittoor</strong></p>
+                <p style="margin-top:14px;line-height:1.5;color:#4a3b33">[SHORT_INVITE_MESSAGE]</p>
+
+                <div style="margin-top:16px;display:flex;gap:10px">
+                    <a class="btn" id="shareBtn"
+                        style="background:transparent;color:var(--accent);border:2px solid rgba(181,137,0,0.12);padding:10px 14px;border-radius:10px">Share</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="photo-card" title="Couple photo">
+                    <!-- Replace src with your hero photo -->
+                    <img id="heroPhoto" src="hero.jpg" alt="Couple photo" />
+                    <div class="motif"></div>
+                    <div class="blossom"></div>
+                </div>
+            </div>
+        </header>
+
+        <section class="card fadeIn" style="--d:0.12s">
+            <h3 style="margin-top:0">Schedule</h3>
+            <div class="grid">
+                <div>
+                    <h4 style="margin:6px 0">Ceremony</h4>
+                    <p>[CEREMONY_TIME &amp; DETAILS]</p>
+                </div>
+                <div>
+                    <h4 style="margin:6px 0">Reception</h4>
+                    <p>[RECEPTION_TIME &amp; DETAILS]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Timer -->
+        <section class="card fadeIn" style="--d:0.15s">
+            <h3 style="margin-top:0">Countdown to the Big Day</h3>
+            <div id="countdown" style="font-size:22px;font-weight:600;color:#3b2b24;margin-top:10px">—</div>
+        </section>
+
+        <!-- Google Maps Section -->
+        <section class="card fadeIn" style="--d:0.17s">
+            <h3 style="margin-top:0">Venue Location</h3>
+            <iframe
+                src="https://www.google.com/maps?q=Santha+Raguram+Kalyana+Mandapam,+Kattamanchi,+Chittoor&output=embed"
+                width="100%" height="250" style="border:0;border-radius:12px" allowfullscreen loading="lazy"></iframe>
+        </section>
+
+        <!-- Blessings Section -->
+        <section class="card fadeIn" style="--d:0.19s">
+            <h3 style="margin-top:0">Blessings</h3>
+            <p style="line-height:1.6;color:#4a3b33">Your blessings mean the world to us. Thank you for being a part of
+                our special journey.</p>
+        </section>
+
+        <!-- Parents Section -->
+        <section class="card fadeIn" style="--d:0.21s">
+            <h3 style="margin-top:0">Parents</h3>
+            <p><strong>Bride’s Parents:</strong> [BRIDE PARENTS]</p>
+            <p><strong>Groom’s Parents:</strong> [GROOM PARENTS]</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="card fadeIn" style="--d:0.23s">
+            <h3 style="margin-top:0">Contact</h3>
+            <a href="tel:[PHONE_NUMBER]" class="btn"
+                style="padding:12px 18px;background:linear-gradient(90deg,var(--accent),#d49a02);color:white;border-radius:10px">Call
+                for Venue Help</a>
+        </section>
+
+        <section class="card fadeIn" style="--d:0.18s">
+            <h3 style="margin-top:0">Gallery</h3>
+            <div class="gallery" id="gallery">
+                <!-- Add image elements or replace src to your files -->
+                <img src="gallery1.jpg" alt="gallery 1">
+                <img src="gallery2.jpg" alt="gallery 2">
+                <img src="gallery3.jpg" alt="gallery 3">
+            </div>
+        </section>
+
+        <footer class="fadeIn" style="--d:0.3s">
+            <p>Looking forward to celebrating with you ✨</p>
+            <small>Made with love • Replace images & text in the HTML file to personalize</small>
+        </footer>
+
+    </div>
+
+    <!-- Optional: background music (replace music.mp3) -->
+    <audio id="bgMusic" loop src="music.mp3"></audio>
+
+    <script>
+        // Small JS for interactions: share & music toggle, simple animation delays, countdown
+        document.addEventListener('DOMContentLoaded', () => {
+            // staggered delays
+            document.querySelectorAll('.stagger > *').forEach((el, i) => el.style.setProperty('--d', (0.08 * i) + 's'));
+
+            // music toggle
+            const music = document.getElementById('bgMusic');
+            const chk = document.getElementById('musicChk');
+            if (chk) {
+                chk.addEventListener('change', () => { if (chk.checked) { music.play().catch(() => { }); } else music.pause(); });
+            }
+
+            // share button (copy URL)
+            const shareBtn = document.getElementById('shareBtn');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', () => {
+                    if (navigator.share) { navigator.share({ title: document.title, text: 'You are invited!', url: location.href }).catch(() => { }); } else { navigator.clipboard.writeText(location.href).then(() => alert('Link copied to clipboard')) }
+                });
+            }
+
+            // small entrance animations
+            document.querySelectorAll('.fadeIn').forEach((el, i) => { el.style.animationDelay = (i * 0.06) + 's' });
+
+            // Countdown logic (reads ?date=YYYY-MM-DD or [DATE] placeholder)
+            function startCountdown(targetDateStr) {
+                let target;
+                if (!targetDateStr) {
+                    // attempt to read from placeholder text in DOM
+                    const dateNode = document.querySelector('.event-meta strong');
+                    targetDateStr = dateNode ? dateNode.textContent.trim() : '';
+                }
+                // try ISO parse first, else try Date parse
+                target = targetDateStr ? new Date(targetDateStr) : null;
+                const cdEl = document.getElementById('countdown');
+                if (!cdEl) return;
+                if (!target || isNaN(target)) {
+                    cdEl.textContent = 'Date not set';
+                    return;
+                }
+                function tick() {
+                    const now = new Date();
+                    const diff = target - now;
+                    if (diff <= 0) { cdEl.textContent = 'Today is the day!'; clearInterval(iv); return; }
+                    const days = Math.floor(diff / 86400000);
+                    const hrs = Math.floor((diff % 86400000) / 3600000);
+                    const mins = Math.floor((diff % 3600000) / 60000);
+                    const secs = Math.floor((diff % 60000) / 1000);
+                    cdEl.textContent = `${days}d ${hrs}h ${mins}m ${secs}s`;
+                }
+                tick();
+                const iv = setInterval(tick, 1000);
+            }
+
+            // If the URL has ?date=YYYY-MM-DD use it
+            const params = new URLSearchParams(location.search);
+            if (params.get('date')) {
+                startCountdown(params.get('date'));
+            } else {
+                // fallback: try to read [DATE] placeholder from template (if user replaced it with an ISO string)
+                const dateText = document.querySelector('.event-meta strong') ? document.querySelector('.event-meta strong').textContent : '';
+                startCountdown(dateText);
+            }
+
+        }); // end DOMContentLoaded
+
+        // Helper: replace placeholder values using URL params (e.g. ?bride=Pavan&groom=Anu&date=2025-12-15)
+        (function applyParams() {
+            const p = new URLSearchParams(location.search);
+            const map = { bride: '[BRIDE FULL NAME]', groom: '[GROOM FULL NAME]', date: '[DATE]', time: '[TIME]', venue: 'Santha Raguram Kalyana Mandapam, Kattamanchi, Chittoor', msg: '[SHORT_INVITE_MESSAGE]' };
+            for (const [k, v] of p.entries()) {
+                try {
+                    document.body.innerHTML = document.body.innerHTML.replace(new RegExp('\\[' + k.toUpperCase() + '\\]', 'g'), decodeURIComponent(v));
+                    // fallback: try the map keys
+                    if (map[k]) document.body.innerHTML = document.body.innerHTML.replace(new RegExp(map[k], 'g'), decodeURIComponent(v));
+                } catch (e) {/* ignore malformed regex replacements */ }
+            }
+        })();
+
+    </script>
+</body>
+
+</html>
