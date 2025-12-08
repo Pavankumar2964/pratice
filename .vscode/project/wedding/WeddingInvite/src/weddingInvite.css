@@ -1,0 +1,56 @@
+:root {
+  --bg: #faf7f2;
+  --accent: #b58900;
+  --muted: #6b5b4b;
+  --card: #fffdf9;
+  --shadow: 0 10px 30px rgba(17,12,8,0.12);
+}
+
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: linear-gradient(180deg,#fff 0%,#fbf7f3 100%);
+  color: var(--muted);
+}
+
+.wrap { max-width: 1100px; margin: 36px auto; padding: 28px; position: relative; }
+
+.nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.brand { font-family:'Playfair Display'; font-weight:700; color: var(--muted); }
+.hero { display:grid; grid-template-columns:1fr 700px; gap:20px; align-items:center; padding:40px; border-radius:24px; background:linear-gradient(135deg,rgba(186,137,0,0.06),rgba(245,240,232,0.6)); box-shadow:var(--shadow); }
+.photo-card { position: relative; border-radius:16px; overflow:hidden; height:320px; box-shadow:0 8px 24px rgba(59,43,36,0.12); }
+.photo-card img { width: 700px;; height:500px; object-fit: cover; display:block; transform:scale(1.02); transition: transform 1.2s ease; }
+.photo-card:hover img { transform:scale(1.08); }
+
+.card { margin-top:28px; background:var(--card); padding:22px; border-radius:14px; box-shadow:var(--shadow); }
+.gallery { display:flex; gap:10px; flex-wrap:wrap; }
+.gallery img { width:calc(100%); height: 100px;;  border-radius:10px; }
+
+/* ---- Animations ---- */
+.fadeUp { opacity:0; transform: translateY(20px); animation: fadeUp 0.9s forwards; animation-delay: var(--d); }
+@keyframes fadeUp { to { opacity:1; transform:translateY(0);} }
+.stagger > * { opacity:0; transform:translateY(12px); animation: fadeUp 0.8s forwards; }
+.stagger > *:nth-child(1){animation-delay:0.1s;} .stagger > *:nth-child(2){animation-delay:0.2s;} .stagger > *:nth-child(3){animation-delay:0.3s;}
+.stagger > *:nth-child(4){animation-delay:0.4s;} .stagger > *:nth-child(5){animation-delay:0.5s;}
+
+/* ---- Hearts & Flowers ---- */
+.hearts-container, .flowers-container { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:1; }
+
+.heart {
+  position: absolute; width:20px; height:20px; background:red; transform:rotate(45deg); animation: floatUp linear infinite;
+}
+.heart::before, .heart::after {
+  content:""; position:absolute; width:20px; height:20px; background:red; border-radius:50%;
+}
+.heart::before { top:-10px; left:0; }
+.heart::after { top:0; left:-10px; }
+
+.flower {
+  position: absolute; width:24px; height:24px; background: radial-gradient(circle, #b58900 40%, #f7f3e9 60%); border-radius:50%; animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 0.8; }
+  50% { opacity:1; }
+  100% { transform: translateY(-50px) scale(1) rotate(360deg); opacity:0; }
+}
