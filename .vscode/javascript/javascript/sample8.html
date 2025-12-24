@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <ul id="myul"></ul>
     <script>
-cinema =     [
-{
-    Tmovie:"salaar",
-    tindustry:"TFI",
-},
-{
-    Tamovie:"retro",
-    taindustry:"KFI",
-    
-}
-];
-cinema.forEach((movie) => {
-    const li = document.createElement("li");
-    li.textContent = `${movie.Tmovie} - ${movie.tindustry}`;
-    document.getElementById("myul").appendChild(li);
-});
+        cinema = [
+            {
+                Tmovie: "salaar",
+                tindustry: "TFI",
+            },
+            {
+                Tamovie: "retro",
+                taindustry: "KFI",
 
-</script>
+            }
+        ];
+        cinema.forEach((movie) => {
+            const li = document.createElement("li");
+            li.textContent = `${movie.Tmovie} - ${movie.tindustry}`;
+            document.getElementById("myul").appendChild(li);
+        });
+
+    </script>
 </body>
+
 </html>
