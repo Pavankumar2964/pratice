@@ -1,4 +1,61 @@
- h1{
-    background-color: lightblue;
-    color:rgb(216, 49, 49);
+body {
+    background-color: rgb(43, 196, 235);
+    width: 1000px;
 }
+.Heading h1 {
+    background-color: white;
+    width: 650px;
+    border: 2px solid;
+    border-radius: 25px;
+    margin-left: 400px;
+}
+
+.form {
+    width: 750px;
+    height: 300px;
+
+    margin-left: 350px;
+    border: 2px solid;
+    border-radius: 20px;
+ background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF6hKc6Vup4At4yY99GFFL8Ok9JwD-Q2ySsA&s)
+}
+
+
+
+input {
+    width: 650px;
+    margin: 20px 10px 10px 20px;
+    border-radius: 10px;
+    height: 35px;
+}
+
+textarea {
+    width: 650px;
+    margin: 20px 10px 10px 20px;
+    border-radius: 5px;
+    height: 55px;
+}
+
+#register {
+    background-color: royalblue;
+    color: white;
+    width: 100px;
+    border-radius: 5px;
+    margin-left: 250px;
+    margin-top: 10px;
+}
+#updateBtn{
+    background-color: cyan;
+    color: black;
+    
+}
+
+table{
+    width: 750px;
+    margin-top: 30px;
+    margin-left:350px ;
+    background-color: azure;
+     background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF6hKc6Vup4At4yY99GFFL8Ok9JwD-Q2ySsA&s)
+}
+
+
