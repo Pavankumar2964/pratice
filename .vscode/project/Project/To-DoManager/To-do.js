@@ -64,7 +64,7 @@ function editTask(i){
       document.getElementById("Description").value=allTasks[i].Description;
 
       document.getElementById("updateBtn").style.display="block";
-      document.getElementById("registerTask").style.display="none";
+      document.getElementById("register").style.display="none";
 }
 
 function updateTask(i) {
@@ -85,7 +85,7 @@ function updateTask(i) {
     document.getElementById("Task").value="";
     document.getElementById("Description").value="";
 
-    document.getElementById("UpdateBtn").style.display="none";
-    document.getElementById("resgisterTask").style.display="block";
+    document.getElementById("updateBtn").style.display="none";
+    document.getElementById("resgister").style.display="block";
 
 }
