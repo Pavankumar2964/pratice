@@ -1,4 +1,6 @@
-var allTasks =[];
+var gIndex = null;
+
+var allTasks =JSON.parse(localStorage.getItem("tasks")) || [];
 
 function registerTask(){
 var TaskNo = document.getElementById("TaskNo").value;
@@ -8,9 +10,10 @@ var Description=document.getElementById("Description").value;
 var Tasks={
     TaskNo,
     Task,
-    Description
+    Description,
 };
 allTasks.push(Tasks);
+saveToLocalStorage();
 document.getElementById("TaskNo").value="";
 document.getElementById("Task").value="";
 document.getElementById("Description").value="";
@@ -28,6 +31,9 @@ function displayTaskInTable(){
             myTr.appendChild(myTd)
         }
         
+
+
+
         var editTd = document.createElement("td");
         var editBtn= document.createElement("button");
         editBtn.innerHTML="Edit";
@@ -51,9 +57,13 @@ function displayTaskInTable(){
 
 displayTaskInTable();
 
+function saveToLocalStorage(){
+    localStorage.setItem("tasks",JSON.stringify(allTasks));
+}
 
 function deleteTask(i){
     allTasks.splice(i,1);
+    saveToLocalStorage();
     displayTaskInTable();
 }
 
@@ -67,8 +77,8 @@ function editTask(i){
       document.getElementById("register").style.display="none";
 }
 
-function updateTask(i) {
-    gIndex=i;
+function updateTask() {
+    
     var TaskNo= document.getElementById("TaskNo") .value;
     var Task=document.getElementById("Task").value;
     var Description=document.getElementById("Description").value;
@@ -80,12 +90,13 @@ function updateTask(i) {
     };
 
     allTasks[gIndex]=tasks;
+    saveToLocalStorage();
     displayTaskInTable();
     document.getElementById("TaskNo").value="";
     document.getElementById("Task").value="";
     document.getElementById("Description").value="";
 
     document.getElementById("updateBtn").style.display="none";
-    document.getElementById("resgister").style.display="block";
+    document.getElementById("register").style.display="block";
 
 }
