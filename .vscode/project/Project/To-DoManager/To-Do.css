@@ -2,6 +2,7 @@ body {
     background-color: rgb(43, 196, 235);
     width: 1000px;
 }
+
 .Heading h1 {
     background-color: white;
     width: 650px;
@@ -17,7 +18,7 @@ body {
     margin-left: 350px;
     border: 2px solid;
     border-radius: 20px;
- background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF6hKc6Vup4At4yY99GFFL8Ok9JwD-Q2ySsA&s)
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF6hKc6Vup4At4yY99GFFL8Ok9JwD-Q2ySsA&s)
 }
 
 
@@ -44,18 +45,17 @@ textarea {
     margin-left: 250px;
     margin-top: 10px;
 }
-#updateBtn{
+
+#updateBtn {
     background-color: cyan;
     color: black;
-    
+
 }
 
-table{
+table {
     width: 750px;
     margin-top: 30px;
-    margin-left:350px ;
+    margin-left: 350px;
     background-color: azure;
-     background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF6hKc6Vup4At4yY99GFFL8Ok9JwD-Q2ySsA&s)
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF6hKc6Vup4At4yY99GFFL8Ok9JwD-Q2ySsA&s)
 }
-
- 
