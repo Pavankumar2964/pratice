@@ -7,8 +7,8 @@ const weatherIcon = document.querySelector(".weather-icon");
 
 async function checkWeather(city) {
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
-    
-    if(response.status == 404) {
+
+    if (response.status == 404) {
         alert("City not found!");
     } else {
         var data = await response.json();
