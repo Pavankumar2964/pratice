@@ -1,7 +1,7 @@
 body {
     background-color: rgb(43, 196, 235);
     width: 1000px;
-    
+
 }
 
 .Heading h1 {
@@ -64,5 +64,6 @@ table {
 .completed-task {
     text-decoration: line-through;
     opacity: 0.6;
-    background-color: #d1ffd1 !important; /* Light green background for finished tasks */
+    background-color: #d1ffd1 !important;
+    /* Light green background for finished tasks */
 }
