@@ -116,15 +116,15 @@ function registerTask() {
         Description,
         completed: false // Added: Default status is pending
     };
-    
+
     allTasks.push(Tasks);
     saveToLocalStorage();
-    
+
     // Clear inputs
     document.getElementById("TaskNo").value = "";
     document.getElementById("Task").value = "";
     document.getElementById("Description").value = "";
-    
+
     displayTaskInTable();
 }
 
@@ -139,7 +139,7 @@ function displayTaskInTable() {
     document.querySelector("tbody").innerHTML = "";
     allTasks.forEach(function (tas, index) {
         var myTr = document.createElement("tr");
-        
+
         // Added: Check if task is completed to apply a CSS class
         if (tas.completed) {
             myTr.classList.add("completed-task");
