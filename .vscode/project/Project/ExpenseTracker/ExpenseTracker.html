@@ -1,11 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker</title>
+  <meta charset="UTF-8" />
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    
+
+  <div class="container">
+    <h1>Expense Tracker</h1>
+
+    <!-- Summary -->
+    <div class="summary">
+      <div>
+        <h3>Income</h3>
+        <p id="income">₹0</p>
+      </div>
+      <div>
+        <h3>Expense</h3>
+        <p id="expense">₹0</p>
+      </div>
+      <div>
+        <h3>Balance</h3>
+        <p id="balance">₹0</p>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form id="expenseForm">
+      <input type="text" id="desc" placeholder="Description" required />
+      <input type="number" id="amount" placeholder="Amount" required />
+      <input type="date" id="date" required />
+      <select id="category">
+        <option value="Income">Income</option>
+        <option value="Food">Food</option>
+        <option value="Travel">Travel</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Other">Other</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+
+    <!-- Filter -->
+    <select id="filter">
+      <option value="All">All</option>
+      <option value="Income">Income</option>
+      <option value="Food">Food</option>
+      <option value="Travel">Travel</option>
+      <option value="Shopping">Shopping</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <!-- List -->
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Category</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="list"></tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
