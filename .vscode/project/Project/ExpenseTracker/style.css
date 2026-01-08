@@ -71,8 +71,31 @@ th, td {
   color: red;
 }
 
+/* Action Buttons */
 .action-btn {
-  margin: 0 5px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 13px;
   cursor: pointer;
-  color: #007bff;
+  margin: 2px;
+  display: inline-block;
+  color: white;
+}
+
+/* Edit Button */
+.edit-btn {
+  background-color: #28a745;
+}
+
+.edit-btn:hover {
+  background-color: #218838;
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: #dc3545;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
 }
