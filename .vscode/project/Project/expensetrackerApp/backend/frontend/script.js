@@ -1,7 +1,8 @@
 let transactions = [];
 let editIndex = null;
 
-const API_URL = "http://localhost:3000/transactions";
+const API_URL = "https://expense-backend.onrender.com/transactions";
+
 
 const form = document.getElementById("expenseForm");
 const list = document.getElementById("list");
