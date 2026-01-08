@@ -51,18 +51,20 @@ function render() {
   transactions
     .filter(t => filter.value === "All" || t.category === filter.value)
     .forEach((t, index) => {
-      const tr = document.createElement("tr");
+    const tr = document.createElement("tr");
 
-      tr.innerHTML = `
-        <td>${t.desc}</td>
-        <td class="${t.category === "Income" ? "income" : "expense"}">₹${t.amount}</td>
-        <td>${t.date}</td>
-        <td>${t.category}</td>
-        <td>
-          <span class="action-btn" onclick="editTransaction(${index})">Edit</span>
-          <span class="action-btn" onclick="deleteTransaction(${index})">Delete</span>
-        </td>
-      `;
+tr.innerHTML = `
+  <td data-label="Description">${t.desc}</td>
+  <td data-label="Amount" class="${t.category === "Income" ? "income" : "expense"}">₹${t.amount}</td>
+  <td data-label="Date">${t.date}</td>
+  <td data-label="Category">${t.category}</td>
+  <td data-label="Actions">
+   <span class="action-btn edit-btn" onclick="editTransaction(${index})">Edit</span>
+<span class="action-btn delete-btn" onclick="deleteTransaction(${index})">Delete</span>
+
+  </td>
+`;
+
 
       list.appendChild(tr);
 
