@@ -1,5 +1,6 @@
-const apiKey = "YOUR_API_KEY_HERE";
-const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+const apiKey = "d61e48a4e33146ac99f124359260801";
+const apiUrl =" https:api.weatherapi.com/v1/forecast.json?key=YOUR_API_KEY&q=Hyderabad&days=3"
+;
 
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
