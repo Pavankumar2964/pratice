@@ -1,8 +1,7 @@
 let transactions = [];
-let editIndex = null;
+let editId = null;
 
 const API_URL = "https://expense-backend.onrender.com/transactions";
-
 
 const form = document.getElementById("expenseForm");
 const list = document.getElementById("list");
@@ -16,34 +15,37 @@ const categoryInput = document.getElementById("category");
 form.addEventListener("submit", addTransaction);
 filter.addEventListener("change", render);
 
-/* ---------------- BACKEND STEP 5 ---------------- */
+/* ---------------- BACKEND ---------------- */
 
-// Load data from backend when page loads
+// Load transactions
 async function loadTransactions() {
   const res = await fetch(API_URL);
   transactions = await res.json();
   render();
 }
 
-// Add / Update transaction in backend
+// Add OR Update
 async function saveTransaction(data) {
-  await fetch(API_URL, {
-    method: "POST",
+  const method = editId ? "PUT" : "POST";
+  const url = editId ? `${API_URL}/${editId}` : API_URL;
+
+  await fetch(url, {
+    method,
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
+
+  editId = null;
   loadTransactions();
 }
 
-// Delete transaction from backend
-async function deleteTransaction(index) {
-  await fetch(`${API_URL}/${index}`, {
-    method: "DELETE",
-  });
+// Delete
+async function deleteTransaction(id) {
+  await fetch(`${API_URL}/${id}`, { method: "DELETE" });
   loadTransactions();
 }
 
-/* ------------------------------------------------ */
+/* ---------------- UI ---------------- */
 
 function addTransaction(e) {
   e.preventDefault();
@@ -58,9 +60,7 @@ function addTransaction(e) {
     return;
   }
 
-  const data = { desc, amount, date, category };
-
-  saveTransaction(data);
+  saveTransaction({ desc, amount, date, category });
   form.reset();
 }
 
@@ -70,7 +70,7 @@ function render() {
 
   transactions
     .filter(t => filter.value === "All" || t.category === filter.value)
-    .forEach((t, index) => {
+    .forEach(t => {
       const tr = document.createElement("tr");
 
       tr.innerHTML = `
@@ -79,14 +79,16 @@ function render() {
         <td>${t.date}</td>
         <td>${t.category}</td>
         <td>
-          <span class="action-btn" onclick="edit(${index})">Edit</span>
-          <span class="action-btn" onclick="remove(${index})">Delete</span>
+          <span class="action-btn" onclick="edit('${t._id}')">Edit</span>
+          <span class="action-btn" onclick="remove('${t._id}')">Delete</span>
         </td>
       `;
 
       list.appendChild(tr);
 
-      t.category === "Income" ? income += t.amount : expense += t.amount;
+      t.category === "Income"
+        ? (income += t.amount)
+        : (expense += t.amount);
     });
 
   document.getElementById("income").innerText = `₹${income}`;
@@ -94,17 +96,17 @@ function render() {
   document.getElementById("balance").innerText = `₹${income - expense}`;
 }
 
-function edit(index) {
-  const t = transactions[index];
+function edit(id) {
+  const t = transactions.find(tx => tx._id === id);
   descInput.value = t.desc;
   amountInput.value = t.amount;
   dateInput.value = t.date;
   categoryInput.value = t.category;
-  editIndex = index;
+  editId = id;
 }
 
-function remove(index) {
-  deleteTransaction(index);
+function remove(id) {
+  deleteTransaction(id);
 }
 
 // Initial load
