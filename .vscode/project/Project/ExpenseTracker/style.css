@@ -30,9 +30,17 @@ h1 {
   background: #eee;
 }
 
-#income { color: green; }
-#expense { color: red; }
-#balance { font-weight: bold; }
+#income {
+  color: green;
+}
+
+#expense {
+  color: red;
+}
+
+#balance {
+  font-weight: bold;
+}
 
 form {
   display: flex;
@@ -40,7 +48,9 @@ form {
   margin-bottom: 15px;
 }
 
-form input, form select, form button {
+form input,
+form select,
+form button {
   padding: 8px;
   flex: 1;
 }
@@ -59,7 +69,8 @@ table {
   background-color: ivory;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
