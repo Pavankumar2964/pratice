@@ -51,9 +51,9 @@ function render() {
   transactions
     .filter(t => filter.value === "All" || t.category === filter.value)
     .forEach((t, index) => {
-    const tr = document.createElement("tr");
+      const tr = document.createElement("tr");
 
-tr.innerHTML = `
+      tr.innerHTML = `
   <td data-label="Description">${t.desc}</td>
   <td data-label="Amount" class="${t.category === "Income" ? "income" : "expense"}">₹${t.amount}</td>
   <td data-label="Date">${t.date}</td>
