@@ -95,3 +95,5 @@ function deleteTransaction(index) {
 
 // Initial render
 render();
+
+
