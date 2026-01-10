@@ -48,10 +48,52 @@ textarea {
 }
 
 #updateBtn {
-    background-color: cyan;
-    color: black;
-
+    background-color: #28a745;   /* green */
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 200px;
+    display: none; /* important */
 }
+
+#updateBtn:hover {
+    background-color: #218838;
+}
+
+.edit-btn {
+    background-color: #007bff; /* blue */
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-left: 15px;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.del-Task {
+    background-color: #dc3545; 
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-left: 15px
+}
+
+.del-Task-btn:hover {
+    background-color: #b02a37;
+}
+
+
 
 table {
     width: 750px;
@@ -61,9 +103,3 @@ table {
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF6hKc6Vup4At4yY99GFFL8Ok9JwD-Q2ySsA&s)
 }
 
-.completed-task {
-    text-decoration: line-through;
-    opacity: 0.6;
-    background-color: #d1ffd1 !important;
-    /* Light green background for finished tasks */
-}
