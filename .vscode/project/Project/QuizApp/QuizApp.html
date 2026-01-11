@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <title>Quiz App</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <title>Advanced Quiz App</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-    <div class="quiz-container">
-        <h2 id="question">Question text</h2>
+<div class="quiz-container">
+  <h2 id="question">Loading...</h2>
 
-        <div id="options" class="options"></div>
+  <div class="progress-bar">
+    <div id="progress"></div>
+  </div>
 
-        <div class="footer">
-            <span id="progress">Question 1 of 5</span>
-            <span id="score">Score: 0</span>
-        </div>
+  <div class="timer">Time Left: <span id="time">10</span>s</div>
 
-        <button id="restart" onclick="restartQuiz()">Restart Quiz</button>
-    </div>
+  <div id="options" class="options"></div>
 
-    <script src="script.js"></script>
+  <div class="footer">
+    <span id="score">Score: 0</span>
+    <span id="highScore">High Score: 0</span>
+  </div>
+
+  <button onclick="restartQuiz()">Restart</button>
+</div>
+
+<script src="script.js"></script>
 </body>
-
 </html>
