@@ -1,9 +1,13 @@
+let playerName = "";
+let players = JSON.parse(localStorage.getItem("players")) || [];
+
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
 const scoreEl = document.getElementById("score");
 const highScoreEl = document.getElementById("highScore");
 const progressEl = document.getElementById("progress");
 const timeEl = document.getElementById("time");
+const leaderboardEl = document.getElementById("leaderboard");
 
 let questions = [];
 let currentIndex = 0;
@@ -11,21 +15,35 @@ let score = 0;
 let timer;
 let timeLeft = 10;
 
-let highScore = localStorage.getItem("highScore") || 0;
-highScoreEl.innerText = `High Score: ${highScore}`;
+/* START QUIZ */
+function startQuiz() {
+  const nameInput = document.getElementById("playerName");
 
-/* FETCH QUESTIONS FROM OPEN TRIVIA API */
+  if (nameInput.value.trim() === "") {
+    alert("Please enter your name");
+    return;
+  }
+
+  playerName = nameInput.value;
+  document.getElementById("nameSection").style.display = "none";
+  document.getElementById("quizSection").style.display = "block";
+
+  renderLeaderboard();
+  fetchQuestions();
+}
+
+/* FETCH QUESTIONS */
 async function fetchQuestions() {
-  const res = await fetch(
-    "https://opentdb.com/api.php?amount=10&type=multiple"
-  );
+  const res = await fetch("https://opentdb.com/api.php?amount=10&type=multiple");
   const data = await res.json();
   questions = data.results;
+  currentIndex = 0;
+  score = 0;
+  scoreEl.innerText = "Score: 0";
   loadQuestion();
 }
 
-fetchQuestions();
-
+/* LOAD QUESTION */
 function loadQuestion() {
   resetTimer();
   const q = questions[currentIndex];
@@ -47,6 +65,7 @@ function loadQuestion() {
   startTimer();
 }
 
+/* CHECK ANSWER */
 function checkAnswer(selected, correct, btn) {
   clearInterval(timer);
 
@@ -61,10 +80,10 @@ function checkAnswer(selected, correct, btn) {
   }
 
   scoreEl.innerText = `Score: ${score}`;
-
   setTimeout(nextQuestion, 800);
 }
 
+/* NEXT QUESTION */
 function nextQuestion() {
   currentIndex++;
   if (currentIndex < questions.length) {
@@ -78,9 +97,11 @@ function nextQuestion() {
 function startTimer() {
   timeLeft = 10;
   timeEl.innerText = timeLeft;
+
   timer = setInterval(() => {
     timeLeft--;
     timeEl.innerText = timeLeft;
+
     if (timeLeft === 0) {
       clearInterval(timer);
       nextQuestion();
@@ -94,26 +115,42 @@ function resetTimer() {
 
 /* PROGRESS BAR */
 function updateProgress() {
-  const percent = ((currentIndex) / questions.length) * 100;
+  const percent = (currentIndex / questions.length) * 100;
   progressEl.style.width = percent + "%";
 }
 
-/* END QUIZ */
+/* FINISH QUIZ */
 function finishQuiz() {
   questionEl.innerText = "Quiz Completed 🎉";
-  optionsEl.innerHTML = `<h3>Your Score: ${score}</h3>`;
+  optionsEl.innerHTML = `<h3>${playerName}'s Score: ${score}</h3>`;
   progressEl.style.width = "100%";
 
-  if (score > highScore) {
-    localStorage.setItem("highScore", score);
-    highScoreEl.innerText = `High Score: ${score}`;
+  players.push({ name: playerName, score });
+  localStorage.setItem("players", JSON.stringify(players));
+
+  renderLeaderboard();
+}
+
+/* LEADERBOARD */
+function renderLeaderboard() {
+  leaderboardEl.innerHTML = "";
+
+  if (players.length === 0) {
+    highScoreEl.innerText = "High Score: -";
+    return;
   }
+
+  const sorted = [...players].sort((a, b) => b.score - a.score);
+  highScoreEl.innerText = `High Score: ${sorted[0].name} - ${sorted[0].score}`;
+
+  sorted.forEach((p, i) => {
+    const li = document.createElement("li");
+    li.innerText = `${i + 1}. ${p.name} - ${p.score}`;
+    leaderboardEl.appendChild(li);
+  });
 }
 
 /* RESTART */
 function restartQuiz() {
-  currentIndex = 0;
-  score = 0;
-  scoreEl.innerText = "Score: 0";
   fetchQuestions();
 }
