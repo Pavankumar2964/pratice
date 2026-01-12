@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Advanced Quiz App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<div class="quiz-container">
+  <div class="quiz-container">
 
-  <!-- NAME INPUT -->
-  <div id="nameSection">
-    <h3>Enter Your Name</h3>
-    <input type="text" id="playerName" placeholder="Your name" />
-    <button onclick="startQuiz()">Start Quiz</button>
-  </div>
-
-  <!-- QUIZ -->
-  <div id="quizSection" style="display:none;">
-    <h2 id="question">Loading...</h2>
-
-    <div class="progress-bar">
-      <div id="progress"></div>
+    <!-- NAME INPUT -->
+    <div id="nameSection">
+      <h3>Enter Your Name</h3>
+      <input type="text" id="playerName" placeholder="Your name" />
+      <button onclick="startQuiz()">Start Quiz</button>
     </div>
 
-    <div class="timer">Time Left: <span id="time">10</span>s</div>
-    <div id="options" class="options"></div>
+    <!-- QUIZ -->
+    <div id="quizSection" style="display:none;">
+      <h2 id="question">Loading...</h2>
 
-    <div class="footer">
-      <span id="score">Score: 0</span>
-      <span id="highScore">High Score: 0</span>
+      <div class="progress-bar">
+        <div id="progress"></div>
+      </div>
+
+      <div class="timer">Time Left: <span id="time">10</span>s</div>
+      <div id="options" class="options"></div>
+
+      <div class="footer">
+        <span id="score">Score: 0</span>
+        <span id="highScore">High Score: 0</span>
+      </div>
+
+      <button onclick="restartQuiz()">Restart</button>
+
+      <!-- LEADERBOARD -->
+      <h3>🏆 Player History</h3>
+      <ul id="leaderboard"></ul>
     </div>
 
-    <button onclick="restartQuiz()">Restart</button>
-
-    <!-- LEADERBOARD -->
-    <h3>🏆 Player History</h3>
-    <ul id="leaderboard"></ul>
   </div>
 
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
