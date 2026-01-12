@@ -36,8 +36,15 @@ body {
   color: #020617;
 }
 
-.correct { background: #22c55e; color: white; }
-.wrong { background: #ef4444; color: white; }
+.correct {
+  background: #22c55e;
+  color: white;
+}
+
+.wrong {
+  background: #ef4444;
+  color: white;
+}
 
 .progress-bar {
   height: 8px;
