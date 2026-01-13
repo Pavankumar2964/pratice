@@ -1,66 +1,118 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #121212;
+
+body{
+  min-width: 100vh;
+  min-height:100vh ;
+  background-color: black;
+}
+h1{
   color: white;
-  margin: 0;
-}
-
-header {
   text-align: center;
-  padding: 15px;
-  background: #1f1f1f;
 }
-
-.container {
-  width: 90%;
-  margin: auto;
-}
-
-.search-box {
+form{
+  text-align: center;
   display: flex;
   justify-content: center;
-  margin: 20px 0;
-  gap: 10px;
+  gap:5px ;
+  margin-bottom: 40px;
 }
+.Image-container{
+  width:90% ;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,8.4fr));
+  margin: 10px auto;
+  place-content: center;
+  gap: 20px;
+}
+img{
+  min-width: 100px;
+  display: block;
 
-input {
-  padding: 10px;
-  width: 250px;
-  border-radius: 5px;
-  border: none;
+  box-shadow: 0 0 3px 2px black;
+  transition: 0.34s ease-in-out;
+}
+img:hover{
+  transform: scale(1.04);
+}
+input{
+  font-size: 1.3rem;
+  border:none;
+  outline: none;
+  border-radius: 0.1em;
 }
 
 button {
-  padding: 10px 20px;
-  border: none;
-  background: #ff3d00;
+  font-size: 1rem;
+  /* Reduced horizontal padding from 8.73em to 1.5em */
+  padding: 0.25em 1.5em; 
+  background-color: aqua;
   color: white;
+  font-weight: bold;
+  box-shadow: 3px 3px 7px 0px rgb(51, 47, 47);
+  border-radius: 3px;
+  border: none;
+  /* Changed width to auto so it fits the text naturally */
+  width: auto; 
+}
+button:active{
+transform:translate(1px,1px) ;
+box-shadow: 1px 1px 7px 0px rgb(51, 47, 47);
+}
+button:hover{
   cursor: pointer;
-  border-radius: 5px;
 }
-
-.movie-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
+/* Card Container */
 .movie-card {
-  background: #1f1f1f;
-  padding: 10px;
-  border-radius: 10px;
-  transition: transform 0.3s;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
 .movie-card:hover {
   transform: scale(1.05);
 }
 
-.movie-card img {
-  width: 100%;
-  border-radius: 10px;
+/* Info Overlay (visible on hover) */
+.movie-info-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 15px;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
 }
 
-.rating {
-  color: gold;
+.movie-card:hover .movie-info-overlay {
+  transform: translateY(0);
+}
+
+.movie-info-overlay h3 {
+  font-size: 1.1rem;
+  margin: 0 0 5px 0;
+  color: aqua;
+}
+
+.movie-info-overlay p {
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+/* Movie Link Button */
+.movie-link {
+  display: inline-block;
+  background-color: aqua;
+  color: black;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.movie-link:hover {
+  background-color: white;
 }
