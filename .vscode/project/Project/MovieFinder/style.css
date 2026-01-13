@@ -1,41 +1,46 @@
-
-body{
+body {
   min-width: 100vh;
-  min-height:100vh ;
+  min-height: 100vh;
   background-color: black;
 }
-h1{
+
+h1 {
   color: white;
   text-align: center;
 }
-form{
+
+form {
   text-align: center;
   display: flex;
   justify-content: center;
-  gap:5px ;
+  gap: 5px;
   margin-bottom: 40px;
 }
-.Image-container{
-  width:90% ;
+
+.Image-container {
+  width: 90%;
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,8.4fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 8.4fr));
   margin: 10px auto;
   place-content: center;
   gap: 20px;
 }
-img{
+
+img {
   min-width: 100px;
   display: block;
 
   box-shadow: 0 0 3px 2px black;
   transition: 0.34s ease-in-out;
 }
-img:hover{
+
+img:hover {
   transform: scale(1.04);
 }
-input{
+
+input {
   font-size: 1.3rem;
-  border:none;
+  border: none;
   outline: none;
   border-radius: 0.1em;
 }
@@ -43,7 +48,7 @@ input{
 button {
   font-size: 1rem;
   /* Reduced horizontal padding from 8.73em to 1.5em */
-  padding: 0.25em 1.5em; 
+  padding: 0.25em 1.5em;
   background-color: aqua;
   color: white;
   font-weight: bold;
@@ -51,15 +56,18 @@ button {
   border-radius: 3px;
   border: none;
   /* Changed width to auto so it fits the text naturally */
-  width: auto; 
+  width: auto;
 }
-button:active{
-transform:translate(1px,1px) ;
-box-shadow: 1px 1px 7px 0px rgb(51, 47, 47);
+
+button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 7px 0px rgb(51, 47, 47);
 }
-button:hover{
+
+button:hover {
   cursor: pointer;
 }
+
 /* Card Container */
 .movie-card {
   position: relative;
