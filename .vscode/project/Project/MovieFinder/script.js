@@ -1,25 +1,25 @@
-const form=document.querySelector('form');
-const container=document.querySelector('.Image-container');
+const form = document.querySelector('form');
+const container = document.querySelector('.Image-container');
 
-form.addEventListener('submit',(e)=>{
+form.addEventListener('submit', (e) => {
   e.preventDefault();
-  let query=form.querySelector('input').value;
+  let query = form.querySelector('input').value;
   console.log(query);
 
-  if(query==""){
-    query="marvel"
+  if (query == "") {
+    query = "marvel"
   }
   tvMazeApi(query);
   form.reset()
 })
 
 async function tvMazeApi(query) {
- const req = await fetch(`https://api.tvmaze.com/search/shows?q=${query}`);
+  const req = await fetch(`https://api.tvmaze.com/search/shows?q=${query}`);
 
-  const movies= await req.json();
+  const movies = await req.json();
 
   makeImages(movies);
-  
+
 }
 
 
