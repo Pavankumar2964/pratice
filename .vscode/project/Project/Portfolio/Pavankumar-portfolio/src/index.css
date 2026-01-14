@@ -281,6 +281,35 @@ ul {
   margin-bottom: 2rem;
 }
 
+.contact-details {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  color: var(--text-color);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.contact-link:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: rgba(100, 108, 255, 0.1);
+}
+
 /* Footer */
 .footer {
   padding: 2rem 0;
