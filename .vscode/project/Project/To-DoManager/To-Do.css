@@ -48,7 +48,8 @@ textarea {
 }
 
 #updateBtn {
-    background-color: #28a745;   /* green */
+    background-color: #28a745;
+    /* green */
     color: white;
     border: none;
     padding: 8px 18px;
@@ -56,7 +57,8 @@ textarea {
     font-size: 14px;
     cursor: pointer;
     margin-left: 200px;
-    display: none; /* important */
+    display: none;
+    /* important */
 }
 
 #updateBtn:hover {
@@ -64,7 +66,8 @@ textarea {
 }
 
 .edit-btn {
-    background-color: #007bff; /* blue */
+    background-color: #007bff;
+    /* blue */
     color: white;
     border: none;
     padding: 6px 14px;
@@ -79,7 +82,7 @@ textarea {
 }
 
 .del-Task {
-    background-color: #dc3545; 
+    background-color: #dc3545;
     color: white;
     border: none;
     padding: 6px 14px;
@@ -102,4 +105,3 @@ table {
     background-color: azure;
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF6hKc6Vup4At4yY99GFFL8Ok9JwD-Q2ySsA&s)
 }
-
