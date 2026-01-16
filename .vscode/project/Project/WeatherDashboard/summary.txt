@@ -1,0 +1,237 @@
+1. Project Summary
+
+Project Name: Weather Dashboard
+Technologies Used:
+
+HTML – Structure
+
+CSS – Styling and layout
+
+JavaScript (Vanilla JS) – Logic, API handling, DOM updates
+
+Open-Meteo API – Weather & geocoding data
+
+Purpose of the Project:
+This project allows users to search for any city and instantly view its current weather details, including:
+
+Temperature
+
+Humidity
+
+Wind speed
+
+Weather condition icon
+
+The data is fetched live from a public weather API and displayed dynamically.
+
+2. Features / Functionality
+
+Search weather by city name
+
+Convert city name → latitude & longitude (Geocoding)
+
+Fetch real-time weather data
+
+Display temperature, humidity, wind speed
+
+Change weather icon based on weather condition
+
+Search using button click or Enter key
+
+Error handling for invalid city names
+
+3. File Structure and Responsibilities
+1️⃣ weatherdashboard.html – Structure
+
+Creates the UI layout
+
+Contains:
+
+Search input box
+
+Search button with icon
+
+Weather display section (temperature, city, humidity, wind)
+
+Links:
+
+style.css
+
+script.js
+
+2️⃣ style.css – Styling
+
+Centers the weather card on the screen
+
+Uses gradient background for modern UI
+
+Styles:
+
+Search bar
+
+Buttons
+
+Weather card
+
+Icons and text
+
+Makes the UI responsive and clean
+
+3️⃣ script.js – Logic & Functionality
+
+This file controls API calls, events, and UI updates.
+
+4. Variables Used
+const searchBox = document.querySelector(".search input");
+const searchBtn = document.querySelector(".search button");
+const weatherIcon = document.querySelector(".weather-icon");
+
+
+Purpose:
+
+Access input field
+
+Detect button clicks
+
+Dynamically change weather icons
+
+5. Functions Used and Explanation
+1️⃣ checkWeather(city) (Async Function)
+
+Purpose:
+Fetch and display weather data for the given city.
+
+How it works (Step-by-Step):
+
+✅ Step 1: Validate input
+if (city === "") return;
+
+
+Prevents empty searches.
+
+✅ Step 2: Geocoding API call
+https://geocoding-api.open-meteo.com/v1/search
+
+
+Converts city name → latitude & longitude
+
+If city not found → alert message
+
+✅ Step 3: Weather API call
+https://api.open-meteo.com/v1/forecast
+
+
+Fetches:
+
+Temperature
+
+Humidity
+
+Wind speed
+
+Weather code
+
+✅ Step 4: Update UI
+document.querySelector(".city").innerHTML = name;
+document.querySelector(".temp").innerHTML = ...
+document.querySelector(".humidity").innerHTML = ...
+document.querySelector(".wind").innerHTML = ...
+
+✅ Step 5: Update weather icon
+
+Calls:
+
+updateWeatherIcon(code);
+
+2️⃣ updateWeatherIcon(code)
+
+Purpose:
+Change weather image based on weather condition code.
+
+Logic Used:
+
+0 → Clear sky ☀️
+
+1–3 → Cloudy ☁️
+
+51–67 → Rain 🌧️
+
+Else → Default weather icon
+
+This improves visual understanding for users.
+
+6. Event Handling
+🔘 Button Click
+searchBtn.addEventListener("click", () => {
+    checkWeather(searchBox.value);
+});
+
+⌨️ Enter Key Press
+searchBox.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        checkWeather(searchBox.value);
+    }
+});
+
+
+✔️ Improves user experience
+✔️ Makes search faster and intuitive
+
+7. Code Flow (Execution Flow)
+🔁 Page Load
+
+HTML loads UI
+
+CSS styles the dashboard
+
+JavaScript waits for user input
+
+🔍 User Searches a City
+
+User enters city name
+
+Clicks search or presses Enter
+
+checkWeather() is called
+
+🌍 API Communication
+
+City → Coordinates (Geocoding API)
+
+Coordinates → Weather data (Weather API)
+
+📊 UI Update
+
+Weather data parsed
+
+Text values updated
+
+Icon updated based on weather code
+
+8. Concepts Used in This Project
+
+Asynchronous JavaScript (async/await)
+
+Fetch API
+
+DOM Manipulation
+
+Event Listeners
+
+REST APIs
+
+Error Handling (try...catch)
+
+Conditional logic
+
+9. Final Conclusion
+
+This Weather Dashboard is a real-world API-based project that demonstrates:
+
+How to integrate third-party APIs
+
+Clean UI + real-time data
+
+Practical JavaScript concepts
+
+It is perfect for portfolio, mini-projects, and interviews.
