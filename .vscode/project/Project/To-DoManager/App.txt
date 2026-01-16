@@ -1,0 +1,266 @@
+1. Project Summary
+
+Project Name: To-Do List Application
+Technologies Used:
+
+HTML – Structure
+
+CSS – Styling & layout
+
+JavaScript – Logic, DOM manipulation, Local Storage
+
+Purpose of the Project:
+This project allows users to add, view, edit, update, and delete tasks. All tasks are stored in the browser using Local Storage, so the data remains even after refreshing the page.
+
+2. Main Functionalities of the Project
+
+Add a new task
+
+Display tasks in a table
+
+Edit an existing task
+
+Update task details
+
+Delete a task
+
+Store tasks permanently using localStorage
+
+3. Files and Their Roles
+1️⃣ To-do manager.html (Structure)
+
+Creates the input form for tasks
+
+Contains:
+
+Task Number
+
+Task Name
+
+Task Description
+
+Buttons:
+
+Add Task
+
+Update Task
+
+Table to display all tasks
+
+Links CSS and JavaScript files
+
+2️⃣ To-Do.css (Styling)
+
+Styles the page layout, form, buttons, and table
+
+Adds:
+
+Background colors
+
+Button hover effects
+
+Rounded borders
+
+Controls visibility of Update button using display: none
+
+3️⃣ To-do.js (Logic & Functionality)
+
+This file controls the entire working of the application.
+
+4. Variables Used
+var gIndex = null;
+
+
+Stores the index of the task currently being edited
+
+var allTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+
+Holds all task objects
+
+Loads saved tasks from localStorage when the page loads
+
+5. Functions Used and Their Purpose
+1️⃣ registerTask()
+
+Purpose: Add a new task
+
+How it works:
+
+Reads values from input fields
+
+Creates a task object
+
+Pushes it into allTasks
+
+Saves data to localStorage
+
+Clears the form
+
+Refreshes the table
+
+allTasks.push(Tasks);
+saveToLocalStorage();
+displayTaskInTable();
+
+2️⃣ displayTaskInTable()
+
+Purpose: Display all tasks in table format
+
+How it works:
+
+Clears existing table rows
+
+Loops through allTasks
+
+Creates:
+
+Table row
+
+Edit button
+
+Delete button
+
+Appends rows to <tbody>
+
+This function is also called:
+
+On page load
+
+After add, update, or delete
+
+3️⃣ saveToLocalStorage()
+
+Purpose: Save tasks permanently
+
+localStorage.setItem("tasks", JSON.stringify(allTasks));
+
+
+Converts array to JSON
+
+Stores it in browser memory
+
+4️⃣ deleteTask(index)
+
+Purpose: Remove a task
+
+How it works:
+
+Removes the selected task using splice
+
+Updates localStorage
+
+Refreshes the table
+
+5️⃣ editTask(index)
+
+Purpose: Edit an existing task
+
+How it works:
+
+Stores the selected task index in gIndex
+
+Loads task data into input fields
+
+Shows Update button
+
+Hides Add Task button
+
+gIndex = i;
+
+6️⃣ updateTask()
+
+Purpose: Update edited task details
+
+How it works:
+
+Reads updated input values
+
+Replaces task at gIndex
+
+Saves changes
+
+Refreshes table
+
+Clears form
+
+Switches back to Add Task mode
+
+6. Code Flow (Step-by-Step Execution)
+🔁 Page Load
+
+Tasks are fetched from localStorage
+
+displayTaskInTable() runs automatically
+
+➕ Adding a Task
+
+User enters task details
+
+Clicks Add Task
+
+registerTask() executes
+
+Task is saved and displayed
+
+✏ Editing a Task
+
+User clicks Edit
+
+editTask(index) runs
+
+Data appears in input fields
+
+Update button becomes visible
+
+🔄 Updating a Task
+
+User modifies task
+
+Clicks Update
+
+updateTask() executes
+
+Task gets updated in array and storage
+
+❌ Deleting a Task
+
+User clicks Delete
+
+deleteTask(index) runs
+
+Task removed instantly
+
+7. Key Concepts Used
+
+DOM Manipulation
+
+Event Handling (onclick)
+
+Arrays & Objects
+
+Local Storage
+
+Dynamic Table Creation
+
+Conditional Button Visibility
+
+8. Final Conclusion
+
+This project is a fully functional CRUD-based To-Do Application that demonstrates:
+
+Real-world JavaScript logic
+
+Data persistence using Local Storage
+
+Clean separation of structure, style, and logic
+
+It is suitable for beginners to intermediate level and can be extended with:
+
+Task status (completed/pending)
+
+Search & filter
+
+Due dates
+
+React conversion (future upgrade)
