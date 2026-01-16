@@ -1,0 +1,107 @@
+Here is a summary of the **Movie Search App** project, including its functionality, code breakdown, and execution flow.
+
+### **1. Project Summary**
+
+This is a web-based application that allows users to search for TV shows and movies. It utilizes the **TVMaze API** to fetch live data. When a user searches for a title, the app displays a responsive grid of movie cards. Each card features the show's poster and includes an interactive hover effect that reveals the show's title, streaming platform, and a direct link to the TVMaze page.
+
+### **2. Functionality & Features**
+
+* **Search Mechanism:** Users input a query. If the input is left empty, it defaults to searching for "marvel".
+* **Dynamic API Fetching:** Data is retrieved asynchronously from `api.tvmaze.com`.
+* **Responsive UI:** The results are displayed in a CSS Grid that adjusts automatically to the screen size (`script.js` inserts elements, `style.css` handles the grid layout).
+* **Interactive Cards:**
+* **Normal State:** Shows the movie poster.
+* **Hover State:** A dark overlay slides up (CSS transition) displaying the Title, Platform (Network/Web Channel), and a "View Details" button.
+
+
+* **Platform Detection:** The code intelligently checks if a show is on a TV Network (e.g., HBO) or a Web Channel (e.g., Netflix) and displays the correct one.
+
+---
+
+### **3. Functions Used**
+
+Here is a breakdown of the specific JavaScript functions found in `script.js`:
+
+#### **A. Event Listener (Anonymous Function)**
+
+* **Trigger:** Attached to the `form` on `'submit'`.
+* **Action:**
+1. Prevents the page from reloading (`e.preventDefault()`).
+2. Captures the user's input.
+3. Sets a default query ("marvel") if the input is empty.
+4. Calls the main data function `tvMazeApi(query)`.
+5. Resets the form input field.
+
+
+
+#### **B. `tvMazeApi(query)**`
+
+* **Type:** `Async/Await` function.
+* **Purpose:** Handles the networking.
+* **Logic:**
+* Uses `fetch()` to send a GET request to the TVMaze search endpoint.
+* Awaits the response and converts it to JSON (`req.json()`).
+* Passes the resulting array of data to `makeImages()`.
+
+
+
+#### **C. `makeImages(movies)**`
+
+* **Type:** DOM Manipulation function.
+* **Purpose:** Renders the HTML cards on the screen.
+* **Logic:**
+1. **Clears previous results:** `container.innerHTML = ""` prevents new searches from stacking on top of old ones.
+2. **Loops** through the `movies` array.
+3. **Image Handling:** Uses a ternary operator to check if an image exists. If not, it assigns a placeholder URL.
+4. **Platform Logic:** Checks `show.network.name`; if null, checks `show.webChannel.name`; otherwise defaults to "Not Listed".
+5. **HTML Construction:** Creates a `div` with class `.movie-card` and injects the Image and the Info Overlay HTML.
+
+
+
+---
+
+### **4. Code Flow (Step-by-Step)**
+
+1. **Initialization:** The browser loads `movieFinder.html`. The CSS styles are applied (black background), and `script.js` is loaded.
+2. **User Action:** The user types a movie name (e.g., "Batman") and clicks "Search".
+3. **Event Trigger:**
+* The `submit` event listener fires.
+* The browser is told *not* to refresh.
+* `tvMazeApi("Batman")` is called.
+
+
+4. **Data Fetching:**
+* The browser sends a request to `https://api.tvmaze.com/search/shows?q=Batman`.
+* The API responds with raw data, which is parsed into a JavaScript Object (JSON).
+
+
+5. **Rendering:**
+* `makeImages` receives the list of Batman shows.
+* It wipes any old search results.
+* It generates a generic "Card" for every show found.
+* It calculates which platform the show is on.
+* It appends the finished card to the `.Image-container`.
+
+
+6. **User Interaction:**
+* The user hovers over a card -> CSS transforms translate the `.movie-info-overlay` upwards to reveal details.
+
+
+
+### **Important Note on Missing Code**
+
+In your `makeImages` function, there is this line:
+
+```javascript
+card.querySelector("img").addEventListener("click", () => {
+    showMovieDetails(show);
+});
+
+```
+
+**Issue:** The function `showMovieDetails(show)` is **not defined** in the provided `script.js`.
+**Result:** If a user clicks the image (instead of the "View Details" link), the console will throw a `ReferenceError`, and nothing will happen. You should either remove this click listener or define the `showMovieDetails` function.
+
+### **Next Step**
+
+Would you like me to write the missing `showMovieDetails` function for you so the image click works (perhaps opening a modal or logging details)?
