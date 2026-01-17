@@ -52,7 +52,11 @@ function makeImages(movies) {
       </div>
     `;
 
-    
+    // Click event for the image (optional, keeps your previous logic)
+    card.querySelector("img").addEventListener("click", () => {
+      showMovieDetails(show);
+    });
+
     container.appendChild(card);
   }
 }
