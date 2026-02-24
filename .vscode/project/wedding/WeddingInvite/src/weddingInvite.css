@@ -9,7 +9,7 @@
 body {
   margin: 0;
   font-family: Inter, sans-serif;
-  background: linear-gradient(180deg,#fff 0%,#fbf7f3 100%);
+  background: linear-gradient(180deg,#f754f7 0%,#fbf7f3 100%);
   color: var(--muted);
 }
 
