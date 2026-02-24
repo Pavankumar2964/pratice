@@ -136,6 +136,7 @@ export default function WeddingInvite() {
               With love and happiness,we invite you and your family to our wedding.please join us and bless us
             </p>
             <button
+            
               id="shareBtn"
               className="btn"
               style={{
@@ -167,7 +168,7 @@ export default function WeddingInvite() {
             Venue Location <span>📍</span>
           </h3>
           <iframe
-            src="https://maps.app.goo.gl/LQpTxt62BGARKU91A"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15535.803594502486!2d79.10112629999999!3d13.2283981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb267c71bf189f9%3A0x7a403565ce805377!2sSrimathi%20santharaghuraman%20kalyana%20mandapam(lgb)chittoor!5e0!3m2!1sen!2sin!4v1771407108602!5m2!1sen!2sin"
             width="100%"
             height="250"
             style={{ border: 0, borderRadius: "12px" }}
@@ -203,7 +204,7 @@ export default function WeddingInvite() {
         <section className="card fadeUp" style={{ "--d": "0.4s" }}>
           <h3 style={{ marginTop: 0 }}>Parents</h3>
           <p><strong>Bride’s Parents:</strong> [S.Sudhakar , S.Sangeetha]</p>
-          <p><strong>Groom’s Parents:</strong> [Ravi , R.Lakshmi]</p>
+          <p><strong>Groom’s Parents:</strong> [M.Ravi , R.Lakshmi]</p>
         </section>
 
         {/* CONTACT */}
@@ -223,23 +224,12 @@ export default function WeddingInvite() {
             Call for Venue Help
           </a>
         </section>
-
-        {/* GALLERY */}
-        <section className="card fadeUp" style={{ "--d": "0.5s" }}>
-          <h3 style={{ marginTop: 0 }}>Gallery</h3>
-          <div className="gallery">
-            <img src="/gallery1.jpg" alt="" />
-            <img src="/gallery2.jpg" alt="" />
-            <img src="/gallery3.jpg" /> {/* UPDATED TO .jpg */}
-          </div>
-        </section>
-
         <footer className="fadeUp" style={{ "--d": "0.55s" }}>
           <p>Looking forward to celebrating with you ✨</p>
         </footer>
       </div>
 
-      <audio id="bgMusic" loop src="/music.mp3"></audio>
+      <audio id="bgMusic" loop src="\Nooru Varusham (Female).mp3"></audio>
     </>
   );
 }
